@@ -1,0 +1,1269 @@
+<!doctype html>
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  body{
+  background-color: #35261e;
+  }
+  .navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 3px;
+  max-width: 384px;
+}
+
+.navbar a {
+  float: left;
+  font-size: 15px;
+  color: #9f8c76;
+  text-align: center;
+  padding:14px 16px;
+  text-decoration: none;
+  
+}
+  .dropdown-content {
+  margin-top: 49px;
+  display: none;
+  position: absolute;
+  background-color: #5c261c ;
+  min-width: 160px;
+  max-width: 384px;
+  box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin-right: 8px;
+  border-radius: 3px;
+  
+}
+.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+  background-color: #222222;
+  color:#ac261c ;
+}
+  .dropdown-content a {
+  float: none;
+  color: #9f8c76;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: inline;
+  text-align: left;
+}
+  .show {
+  display: block;
+  }
+  .dropdown-content button
+  {
+  background-color: #5c261c;
+  width: 120px;
+  border: none;
+  border-color: #555555;
+  border-radius: 3px;
+  height: 50px;
+  min-width: 50px;
+  margin-bottom 1px;
+  margin-right:0;
+  max-width: 200px;
+  max-height: 120px;
+  color: #9f8c76;
+  font-size: 15px;
+  }
+  .dropbtn
+  {
+  border: none;
+  float: left;
+  font-size: 18px;
+  color: #9f8c76;
+  text-align: center;
+  padding:15px 15px;
+  text-decoration: none;
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  z-index: 1;
+  position: relative;
+  }
+
+  input[type=file] {
+  background-color: #333;
+  border: none;
+  color: #9f8c76;
+  padding: 14px 15px;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 1;
+  width: 200px;
+  display: none;
+  z-index: 0;
+  
+  }
+  .f
+  {
+  margin-top: 49px;
+  display: none;
+  position: absolute;
+  background-color: #5c261c ;
+  min-width: 160px;
+  max-width: 384px;
+  box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin-right: 8px;
+  border-radius: 3px;
+  }
+  .data1
+  {
+    position: relative;
+    margin-top: 0px;
+  }
+  .data0
+  {
+    position: relative;
+    margin-top: 10px;
+  }
+
+  </style>
+    </head>
+    <body>
+     
+<div class="navbar">
+  
+  <button id="variabl"class="dropbtn" onclick="cpu_variables()">Info
+    <i class="fa fa-caret-down"></i>
+  </button>
+
+  <button class="dropbtn" onclick="toggleroms()">Rom
+    <i class="fa fa-caret-down"></i>
+  </button>
+
+  </button>
+  <div class="dropdown-content" id="dropd">
+        <button onclick="readrom01()">Tapeworm</button>
+        <button onclick="readrom02()">WormV4</button>
+        <button onclick="readrom3()">Bowling</button>
+        <button onclick="readrom4()">Brix</button>
+        <button onclick="readrom5()" >Guess</button>
+        <button onclick="readrom6()">15Puzzle</button>
+        <button onclick="readrom7()"  >Connect4</button>
+        <button onclick="readrom8()"  >Missile</button>
+        <button onclick="readrom9()" >Syzygy</button>
+        <button onclick="readrom10()"  >Hidden</button>
+        <button onclick="readrom11()">Blinky</button>
+        <button onclick="readrom12()" >Kaleid</button>
+        <button onclick="readrom13()" >RushHour</button>
+        <button onclick="readrom14()" >Merlin</button>
+        <button onclick="readrom15()"  >Wall</button>
+        <button onclick="readrom16()"  >Blitz</button>
+        <button onclick="readrom17()"  >Pong</button>
+        <button onclick="readrom18()" >Pong2</button>
+        <button onclick="readrom19()">Puzzle</button>
+        <button onclick="readrom20()"  >Invaders</button>
+        <button onclick="readrom21()"  >Tank</button>
+        <button onclick="readrom22()"  >Tetris</button>
+        <button onclick="readrom23()"  >Tictac</button>
+        <button onclick="readrom24()" >Ufo</button>
+        <button onclick="readrom25()">Vbrix</button>
+        <button onclick="readrom26()"  >Vers</button>
+        <button onclick="readrom27()"  >Wipeoff</button>
+        <button onclick="readrom28()"  >Submarine</button>
+        <button onclick="readrom29()" >Soccer</button>
+        <button onclick="readrom30()">Squash</button>
+        <button onclick="readrom31()"  >Breakout</button>
+        <button onclick="readrom32()"  >Craps</button>
+        <button onclick="readrom33()"  >Tron</button>
+        <br>
+       
+  </div>
+  
+            <div id="dropd"style="position:relative;">
+  <div class="input" style="position:absolute;">
+  <input id="input" class="i" type="file" style="position:relative;" oninput="readrom()">
+  </div>
+  <div class="overlay"style="position:relative;">
+  <button class="dropbtn"; style="width:97px; position:relative;" onclick="document.getElementById('input').click()">Filepath
+  </div> 
+  </div> 
+  
+      <button class="dropbtn" onclick="cpu_pause()">Pause</button>
+    <button class="dropbtn"id="reset_rom" onclick="cpu_reset()">Reset</button>
+
+  
+</div>
+  
+    </body>
+
+    <style>
+    button
+    {
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+        unselectable: on;   
+    }
+    .k{
+    background-color: brown;
+    height:92px; width:92px; margin-bottom: 5px; margin-right: 2px; border-radius: 3px;
+    }
+    p
+    {
+    color: #cc8c76;
+    }
+    </style>
+<body>
+<canvas id="canvas" height="192" width="384" style="border: none;"></canvas>
+<br>
+    <div style="text-align: left; ">
+        <button class="k" id=1  ontouchstart="" ontouchend=""  value=(>1</button>
+        <button class="k" id=2  ontouchstart="" ontouchend=""  value=)>2</button>
+        <button class="k"  id=3 ontouchstart="" ontouchend=""  value=^>3</button>
+        <button class="k" id="c"  ontouchstart="" ontouchend=""  value=ln>C</button>
+        <br>
+        <button class="k" id=4 ontouchstart="" ontouchend=""   value=7>4</button>
+        <button class="k" id=5 ontouchstart="" ontouchend=""   value=8>5</button>
+        <button class="k"  id=6 ontouchstart="" ontouchend=""   value=9>6</button>
+        <button class="k" id="d" ontouchstart="" ontouchend=""   value=del>D</button>    
+
+        <br>
+        <button class="k" id=7 ontouchstart="" ontouchend="" value=7 >7</button>
+        <button class="k" id=8 ontouchstart="" ontouchend=""  value=5>8</button>
+        <button class="k" id=9 ontouchstart="" ontouchend=""   value=6>9</button>
+        <button class="k" id="e" ontouchstart="" ontouchend=""  value=*>E</button>
+        <br>
+
+        <button class="k"  id="a" ontouchstart="" ontouchend=""   value=1>A</button>
+        <button class="k" id=0 ontouchstart="" ontouchend=""   value=2 >0</button>
+        <button class="k" id="b" ontouchstart=""  ontouchend=""  value=3>B</button>
+        <button class="k" id="f" ontouchstart="" ontouchend=""   value=+>F</button>
+        </div>
+<br>
+
+  <div id="cycle_settings"></div>
+
+<div class="variables" id="v" > 
+<div id=-1></div>
+<div id=01></div>
+<div id=02></div>
+<div id=03></div>
+<div id=04></div>
+<div id=05></div>
+<div id=06></div>
+<div id=07></div>
+<div id=08></div>
+<div id=09></div>
+<div id=-2></div>
+<div id=-3></div>
+<div id=-4></div>
+
+<div id="opc_sequence"></div>
+
+<div id=-5></div>
+<div id=-6></div>
+<div id=-7></div>
+<div id=-8></div>
+</div>
+
+</body>
+</html>
+<script>
+cpu={
+memory:new Uint8Array(4096),
+pc:0,
+I:0,
+sp:0,
+register:new Uint8Array(16),
+stack:new Uint16Array(16),
+vram:new Uint8Array(2048),
+canvas0:document.getElementById("canvas"),
+delaytimer:0,
+soundtimer:0,
+drawflag:false,
+//refreshr:16,
+interval:null,
+keypress: new Array(16),
+ctx:document.getElementById("canvas").getContext("2d"),
+opcode_keypress:100000,
+cycle:null,
+toggle_frequency:0,
+}
+
+let fontset =[
+  0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
+  0x20, 0x60, 0x20, 0x20, 0x70, // 1
+  0xF0, 0x10, 0xF0, 0x80, 0xF0, // 2
+  0xF0, 0x10, 0xF0, 0x10, 0xF0, // 3
+  0x90, 0x90, 0xF0, 0x10, 0x10, // 4
+  0xF0, 0x80, 0xF0, 0x10, 0xF0, // 5
+  0xF0, 0x80, 0xF0, 0x90, 0xF0, // 6
+  0xF0, 0x10, 0x20, 0x40, 0x40, // 7
+  0xF0, 0x90, 0xF0, 0x90, 0xF0, // 8
+  0xF0, 0x90, 0xF0, 0x10, 0xF0, // 9
+  0xF0, 0x90, 0xF0, 0x90, 0x90, // A
+  0xE0, 0x90, 0xE0, 0x90, 0xE0, // B
+  0xF0, 0x80, 0x80, 0x80, 0xF0, // C
+  0xE0, 0x90, 0x90, 0x90, 0xE0, // D
+  0xF0, 0x80, 0xF0, 0x80, 0xF0, // E
+  0xF0, 0x80, 0xF0, 0x80, 0x80  // F
+];
+
+function reset()
+{
+  cpu.keypress.map(()=>0);
+  cpu.opcode_keypress=100000;
+  let str = ""
+  cpu.memory=cpu.memory.map(()=>0);
+  cpu.memory.map((val,idx)=>cpu.memory[idx]=fontset[idx]);
+  cpu.ctx=cpu.canvas0.getContext("2d");
+//  document.getElementById("input").addEventListener("onload", function (){
+  cpu.vram = cpu.vram.map(()=>0);
+  cpu.stack = cpu.stack.map(()=>0);
+  cpu.register = cpu.register.map(()=>0);
+  cpu.pc = 512;
+  cpu.sp = 0;
+  cpu.I = 0;
+  cpu.soundtimer = 0;
+  cpu.delaytimer = 0;
+  cpu.interval = cpu.toggle_frequency? 0x800 : 0xF;
+  clearInterval(cpu.cycle);
+  cpu.cycle=null;
+}
+let s="";
+
+function toggleroms() {
+      document.getElementById("dropd").classList.toggle("show");
+    }
+  window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+  var dropd = document.getElementById("dropd");
+    if (dropd.classList.contains('show')) {
+      dropd.classList.remove('show');
+    }
+  }
+  if (e.target.matches('.variabl')){
+    var dropd = document.getElementById("dropd");
+    if (dropd.classList.contains('show')) {
+      dropd.classList.remove('show');
+    }
+  }
+}
+/*
+getData();
+async function getData() {
+  const url = "/roms/chip8/BRIX.ch8";
+  try {
+    const response = await fetch(url);
+    
+    const buffer = await response.arrayBuffer();
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+cpu.memory.map((val,idx)=>cpu.memory[idx+512]=buffer[idx]);
+//    const json = await response.json();
+ //   console.log(json);
+  } catch (error) {
+    console.error(error.message);
+  }
+
+cpu.pc=512;
+clearInterval(cycle);
+cycle=setInterval(emu,16);
+}
+*/
+//document.querySelector("#rom2").addEventListener("click",() => {readrom()});
+let reset_ = 0;
+
+function readrom02(){readrom1('../roms/chip8/maze.ch8');}
+//readrom1('roms/chip8/maze.ch8');
+async function get()
+{
+const response = await fetch('roms/chip8/BRIX.ch8');
+return response.arrayBuffer();
+}
+let v ='';
+//setTimeout(readrom2,1000);
+if ((window.location.href).slice(-3)=='brix'){
+      switch ((window.location.href).slice(-4,-7)){
+         case 'brix':readrom1('roms/chip8/BRIX.ch8'); break;
+         default: v='../roms/chip8/BRIX.ch8';
+      }
+}
+//readrom2();
+v='../roms/chip8/'+((window.location.href).slice(-4))+'.ch8';
+
+readrom1('/roms/chip8/maze.ch8');
+
+function readrom1(l)
+{  
+  reset();
+  reset_ = 34;
+/*  
+  document.getElementById('reset_rom').addEventListener('click', function(){
+  fetch(l)
+  .then((res) => res.arrayBuffer())
+  .then((arrayBuffer) => {
+   let buffer = new Uint8Array(arrayBuffer);
+   })
+  .catch((h) => console.error(h));
+  cpu.memory.map((val,idx)=>cpu.memory[idx+512]=buffer[idx]);
+  cpu.pc=512;
+  
+  //xhr.send();
+  clearInterval(cpu.cycle);
+  cpu.cycle=setInterval(emu,16);
+})
+*/
+document.addEventListener('DOMContentLoaded', function(){
+  let xhr = new XMLHttpRequest();
+  xhr.open('GET',l);
+  xhr.responseType = "arraybuffer";
+  xhr.onload = function(){
+    let buffer = new Uint8Array(xhr.response);
+    cpu.memory.map((val,idx)=>cpu.memory[idx+512]=buffer[idx]);
+    cpu.pc=512;
+  };
+  xhr.send();
+  clearInterval(cpu.cycle);
+  cpu.cycle=setInterval(emu,cpu.interval);
+})
+}
+
+function readrom01(){readrom2('/roms/chip8/tapeworm.ch8'); reset_ =1;}
+function readrom02(){readrom2('/roms/chip8/wormv4.ch8'); reset_ = 2;}
+function readrom3(){readrom2('/roms/chip8/bowling.ch8'); reset_ = 3;}
+function readrom4(){readrom2('/roms/chip8/brix.ch8'); reset_ = 4;}
+function readrom5(){readrom2('/roms/chip8/guess.ch8'); reset_ = 5;}
+function readrom6(){readrom2('/roms/chip8/15Puzzle.ch8'); reset_ = 6;}
+function readrom7(){readrom2('/roms/chip8/connect4.ch8'); reset_ = 7;}
+function readrom8(){readrom2('/roms/chip8/missile.ch8'); reset_ = 8;}
+function readrom9(){readrom2('/roms/chip8/syzygy.ch8'); reset_ = 9;}
+function readrom10(){readrom2('/roms/chip8/hidden.ch8'); reset_ = 10;}
+function readrom11(){readrom2('/roms/chip8/blinky.ch8'); reset_ = 11;}
+function readrom12(){readrom2('/roms/chip8/kaleid.ch8'); reset_ = 12;}
+function readrom13(){readrom2('/roms/chip8/rushhour.ch8'); reset_ = 13;}
+function readrom14(){readrom2('/roms/chip8/merlin.ch8'); reset_ = 14;}
+function readrom15(){readrom2('/roms/chip8/wall.ch8'); reset_ = 15;}
+function readrom16(){readrom2('/roms/chip8/blitz.ch8'); reset_ = 16;}
+function readrom17(){readrom2('/roms/chip8/pong.ch8'); reset_ = 17;}
+function readrom18(){readrom2('/roms/chip8/pong2.ch8'); reset_ = 18;}
+function readrom19(){readrom2('/roms/chip8/puzzle.ch8'); reset_ = 19;}
+function readrom20(){readrom2('/roms/chip8/invaders.ch8'); reset_ = 20;}
+function readrom21(){readrom2('/roms/chip8/tank.ch8'); reset_ = 21;}
+function readrom22(){readrom2('/roms/chip8/tetris.ch8'); reset_ = 22;}
+function readrom23(){readrom2('/roms/chip8/tictac.ch8'); reset_ = 23;}
+function readrom24(){readrom2('/roms/chip8/ufo.ch8'); reset_ = 24;}
+function readrom25(){readrom2('/roms/chip8/vbrix.ch8'); reset_ = 25;}
+function readrom26(){readrom2('/roms/chip8/vers.ch8'); reset_ = 26;}
+function readrom27(){readrom2('/roms/chip8/wipeoff.ch8'); reset_ = 27;}
+function readrom28(){readrom2('/roms/chip8/submarine.ch8');reset_ = 28;}
+function readrom29(){readrom2('/roms/chip8/soccer.ch8');reset_ = 29;}
+function readrom30(){readrom2('/roms/chip8/squash.ch8');reset_ = 30;}
+function readrom31(){readrom2('/roms/chip8/breakout.ch8');reset_ = 31;}
+function readrom32(){readrom2('/roms/chip8/craps.ch8');reset_ = 32;}
+function readrom33(){readrom2('/roms/chip8/tron.ch8');reset_ = 33;}
+function readrom34(){readrom2('/roms/chip8/maze.ch8'); reset_ = 34;}
+
+
+function readrom2(url)
+{
+  document.getElementById("input").value = '';
+  reset();
+//  document.getElementById('-6').innerHTML = 12345;
+  let request = new XMLHttpRequest();
+  request.open('GET',url);
+  request.responseType = 'arraybuffer';
+  request.onload = function(){
+    let buffer = new Uint8Array(request.response);
+    cpu.memory.map((val,idx)=>cpu.memory[idx+512]=buffer[idx]);
+    cpu.pc=512;
+  }
+  request.send();
+  if(cycle1 ==0)
+  {
+  clearInterval(cpu.cycle);
+  cpu.cycle=setInterval(emu,cpu.interval);
+  }
+}
+//readrom();
+function tdecr()
+  {
+    if (cpu.soundtimer>0)cpu.soundtimer--;
+    if (cpu.delaytimer>0)cpu.delaytimer--;
+    let a=new Audio("");
+    a.play;
+  }
+  /*
+if(cpu.interval!=null)
+clearInterval(cpu.interval);
+cpu.interval=setInterval(tdecr(),cpu.refreshr);
+*/
+
+  
+document.getElementById("reset_rom").addEventListener("click", function (){
+  if(reset_ == 35)
+  readrominput();
+});
+
+document.getElementById("input").addEventListener("input", function (){
+  readrom();
+});
+
+cpu.memory.map((val,idx)=>cpu.memory[idx]=fontset[idx]);
+function readrom()
+{      
+            reset();
+            reset_ = 35;
+      let romdata=document.getElementById("input").files[0];
+      let reader=new FileReader();
+      reader.addEventListener("loadend", function(){
+         let buffer=new Uint8Array(reader.result);
+         buffer0 = buffer;
+     //    cpu.memory=buffer;
+     //    cpu.memory.map((val,idx)=>cpu.memory[idx+512]=buffer[idx]);
+/*         for(let i=0; i<buffer.length; ++i)
+         {
+           cpu.memory[512+i] = buffer[i];
+         }*/
+         cpu.memory.map((val,idx)=>cpu.memory[idx+512]=buffer[idx]);
+         cpu.pc=512;
+   //      document.getElementById("-1").innerHTML="memory"+to0xstr(cpu.memory[cpu.pc]);
+      });
+      reader.readAsArrayBuffer(romdata);
+      clearInterval(cpu.cycle);
+      if(cycle1 ==0)
+      cpu.cycle=setInterval(emu,cpu.interval);
+}
+buffer0 = new Uint8Array;
+function readrominput()
+{           
+            reset();
+            reset_ = 35;
+      let romdata=document.getElementById("input").files[0];
+      let reader=new FileReader();
+         buffer0=new Uint8Array(reader.result);
+         cpu.memory.map((val,idx)=>cpu.memory[idx+512]=buffer0[idx]);
+         cpu.pc=512;
+      reader.readAsArrayBuffer(romdata);
+      clearInterval(cpu.cycle);
+      cpu.cycle=setInterval(emu,cpu.interval);
+}
+function render()
+{
+  if (cpu.drawflag==false)return;
+  cpu.ctx.fillStyle="brown";
+  cpu.ctx.fillRect(0,0,384,192);
+  cpu.ctx.fillStyle="beige";
+  for(i=0; i<2048; i++)
+  {
+    if(cpu.vram[i]==1)
+    {  
+      let p = (((i>>6) | 0));
+      let q = i - (p<<6);
+      cpu.ctx.fillRect(6*(q),6*(p),6,6);
+  //    ctx.fillRect((i%64)*5.5,0|(i/64)*5.5,6,6);
+      
+    }
+  }
+  cpu.drawflag=false;
+}
+function to0xstr(opcode){
+opcode=opcode.toString(16);
+let p=4-opcode.length;
+let str="0x";
+for(let i=0; i<p; i++)
+{
+  str=str + "0";
+}
+str+=opcode;
+return str;
+}
+
+cpudata=null;
+let toggle_cpu_variables = 0;
+let toggle_opc = 0;
+//cpu_variables();
+function cpu_variables()
+{
+var dropd = document.getElementById("dropd");
+if (dropd.classList.contains('show')) {
+  dropd.classList.remove('show');  
+  //document.getElementById("dropd").classList.toggle("show");
+}
+toggle_cpu_variables ^= 1;
+clearInterval(cpudata);
+
+if(toggle_cpu_variables == 1)
+{
+document.getElementById('cycle_settings').innerHTML += 
+`<button class="data0" id="1xspeed" onclick="speed1x()" style="font-size: 15px ;color:  #9f8c76; background-color: #333; height:25px;width:72px;" >1xspeed</button>
+ <button class="data0" id="cycle_" onclick="cpu_frequency()" style="font-size: 15px; color:  #9f8c76; background-color: #333; height:25px;width:72px; margin-left: 1px;">slow</button>
+ <button class="data0" id="step_" onclick="cycle_mode()" style="font-size: 15px ;color:  #9f8c76; background-color: #333; height:25px;width:72px; margin-left: 1px;" >1cycle</button>
+ <button class="data0" id="toggle_p"onclick="cpu_pause()" style="font-size: 15px ;color:  #9f8c76; background-color: #333; height:25px;width:72px; margin-left: 1px;" >pause</button>
+ <button class="data0" id="reset_rom" onclick="cpu_reset()" style="font-size: 15px ;color:  #9f8c76; background-color: #333; height:25px;width:72px; margin-left: 1px;" >reset</button>`;
+
+
+if (cycle1 == 1)
+document.getElementById("step_").style = "background-color: #ac261c; font-size: 15px ;color:  #9f8c76; height:25px; width:72px; margin-top: 10px; margin-left: 1px;";
+else if(cpu.toggle_frequency == 1)
+document.getElementById("cycle_").style = "background-color: #ac261c; font-size: 15px ;color:  #9f8c76; height:25px; width:72px; margin-top: 10px; margin-left: 1px;";
+else 
+document.getElementById("1xspeed").style = "background-color: #ac261c; font-size: 15px ;color:  #9f8c76; height:25px; width:72px; margin-top: 10px; margin-left: 1px;";
+if(toggle_pause == 1)
+document.getElementById("toggle_p").style="font-size: 15px ;color:  #9f8c76; background-color: #ac261c; height:25px;width:72px; margin-top: 10px; margin-left: 1px;";
+document.getElementById('opc_sequence').innerHTML += 
+`<button class="data1"id="opc_button" onclick="opc_s()" style="font-size: 15px ;color:  #9f8c76; background-color: #333; height:25px;width:72px;" >opcodes</button>`;
+
+  document.getElementById("02").innerHTML="register set: "+(cpu.register)  ;
+  document.getElementById("03").innerHTML="sp: "+cpu.sp+"  stack: "+to0xstr(cpu.stack[cpu.sp]);
+  document.getElementById("05").innerHTML="delaytimer: "+cpu.delaytimer+"  soundtimer: "+cpu.soundtimer;
+  document.getElementById("06").innerHTML="memory: "+(cpu.memory);
+  document.getElementById ("07").innerHTML ="key: "+cpu.keypress;
+  document.getElementById("08").innerHTML='vram: '+(cpu.vram);
+  document.getElementById("09").innerHTML=`cpu.pc:  ${cpu.pc}  cpu.I: ${cpu.I}`; 
+
+cpudata=setInterval(function()
+{
+  document.getElementById("02").innerHTML="register set: "+(cpu.register)  ;
+  document.getElementById("03").innerHTML="sp: "+cpu.sp+"  stack: "+to0xstr(cpu.stack[cpu.sp]);
+  document.getElementById("05").innerHTML="delaytimer: "+cpu.delaytimer+"  soundtimer: "+cpu.soundtimer;
+
+  document.getElementById("06").innerHTML="memory: "+(cpu.memory);
+//    document.getElementById("07").innerHTML="dt"+cpu.delaytimer;
+//    document.getElementById ("07").innerHTML =key+": "+cpu.keypress[key];
+
+  document.getElementById ("07").innerHTML ="key: "+cpu.keypress;
+  document.getElementById("08").innerHTML='vram: '+(cpu.vram);
+//  document.getElementById("-1").innerHTML="memory"+to0xstr(cpu.memory[cpu.pc]);
+//  document.getElementById ("-2").innerHTML =`register ${cpu.register}opc_k  ${cpu.opcode_keypress}`;
+  document.getElementById("09").innerHTML=`cpu.pc:  ${cpu.pc}  cpu.I: ${cpu.I}`; 
+
+},0x80);
+}
+else{
+    document.getElementById('cycle_settings').innerHTML ='';
+    document.getElementById('opc_sequence').innerHTML ='';
+    document.getElementById("02").innerHTML='';
+    document.getElementById("03").innerHTML='';
+  document.getElementById("05").innerHTML='';
+  document.getElementById("06").innerHTML='';
+  document.getElementById ("07").innerHTML ='';
+  document.getElementById("08").innerHTML='';
+  document.getElementById("09").innerHTML=''; 
+  document.getElementById("-5").innerHTML='';
+  toggle_opc = 0;
+  clearInterval(opc_interval);
+}
+
+}
+let opc_interval =null;
+function opc_s()
+{
+//  emu();
+//  setInterval(emu(),16);
+toggle_opc ^= 1;
+  if(toggle_opc == 1)
+  {
+    document.getElementById("opc_button").style = "background-color: #ac261c; font-size: 15px ;color:  #9f8c76; height:25px; width:72px;";
+    document.getElementById("-5").innerHTML="pc, opcodes: <br>"+s;
+    opc_interval = setInterval(function(){
+      document.getElementById("-5").innerHTML="pc, opcodes: <br>"+s;
+      document.getElementById("opc_button").style = "background-color: #ac261c; font-size: 15px ;color:  #9f8c76; height:25px; width:72px;";
+    }, 0x200);
+    
+  }
+  else
+  {
+    clearInterval(opc_interval);
+    document.getElementById("-5").innerHTML='';
+    document.getElementById("opc_button").style="font-size: 15px ;color:  #9f8c76; background-color: #333; height:25px; width:72px;";
+  }
+}
+let toggle_pause = 0;
+let cycle= null;
+
+function cpu_reset(){
+  console.log(reset_);
+  switch (reset_){
+    case 35: readrom(); break;
+    case 34: readrom34(); break;
+    case 33: readrom33(); break;
+    case 32: readrom32(); break;
+    case 31: readrom31(); break;
+    case 30: readrom30(); break;
+    case 29: readrom29(); break;
+    case 28: readrom28(); break;
+    case 27: readrom27(); break;
+    case 26: readrom26(); break;
+    case 25: readrom25(); break;
+    case 24: readrom24(); break;
+    case 23: readrom23(); break;
+    case 22: readrom22(); break;
+    case 21: readrom21(); break;
+    case 20: readrom20(); break;
+    case 19: readrom19(); break;
+    case 18: readrom18(); break;
+    case 17: readrom17(); break;
+    case 16: readrom16(); break;
+    case 15: readrom15(); break;
+    case 14: readrom14(); break;
+    case 13: readrom13(); break;
+    case 12: readrom12(); break;
+    case 11: readrom11(); break;
+    case 10: readrom10(); break;
+    case 9: readrom9(); break;
+    case 8: readrom8(); break;
+    case 7: readrom7(); break;
+    case 6: readrom6(); break;
+    case 5: readrom5(); break;
+    case 4: readrom4(); break;
+    case 3: readrom3(); break;
+    case 2: readrom02(); break;
+    case 1: readrom01(); break;
+  }
+  var dropd = document.getElementById("dropd");
+  if (dropd.classList.contains('show')) {
+  dropd.classList.remove('show'); 
+  } 
+  toggle_pause = 0;
+  emu();
+  document.getElementById("toggle_p").style="font-size: 15px ;color:  #9f8c76; background-color: #333; height:25px; width:72px; margin-top: 10px; margin-left: 1px;";
+  s = '';
+}
+
+function cpu_pause(){
+  clearInterval(cpu.cycle);
+
+  if(toggle_pause == 1)
+  {
+    document.getElementById("toggle_p").style="font-size: 15px ;color:  #9f8c76; background-color: #333; height:25px; width:72px; margin-top: 10px; margin-left: 1px;";
+    if (cycle1 == 0)
+    {
+    if(cpu.toggle_frequency == 1)
+    {
+      cpu.cycle=setInterval(emu,0x800);
+    }
+    else if(cpu.toggle_frequency == 0)
+    {
+      cpu.cycle=setInterval(emu,0xF);
+    }
+    }
+  }
+  else
+  {
+  document.getElementById("toggle_p").style="font-size: 15px ;color:  #9f8c76; background-color: #ac261c; height:25px;width:72px; margin-top: 10px; margin-left: 1px;";
+  }
+  toggle_pause ^= 1;
+  var dropd = document.getElementById("dropd");
+  if (dropd.classList.contains('show')) {
+  dropd.classList.remove('show');
+  } 
+}
+function cpu_frequency(){
+    cpu.toggle_frequency = 1;
+    cycle1 = 0;
+    toggle_pause = 0;
+    clearInterval(cpu.cycle);
+    cpu.cycle=setInterval(emu,0x800);
+    document.getElementById("cycle_").style = "background-color: #ac261c; font-size: 15px ;color:  #9f8c76; height:25px; width:72px; margin-top: 10px; margin-left: 1px;";
+    document.getElementById("1xspeed").style = "background-color: #333; font-size: 15px ;color:  #9f8c76; height:25px; width:72px; margin-top: 10px; margin-left: 1px;";
+    document.getElementById("toggle_p").style="font-size: 15px ;color:  #9f8c76; background-color: #333; height:25px; width:72px; margin-top: 10px; margin-left: 1px;";
+    document.getElementById("step_").style = "background-color: #333; font-size: 15px ;color:  #9f8c76; height:25px; width:72px; margin-top: 10px; margin-left: 1px;";
+  /*
+  else
+  {
+    clearInterval(cpu.cycle);
+    cpu.cycle=setInterval(emu,0xF);
+    document.getElementById("cycle_").style = "background-color: #333; font-size: 15px ;color:  #9f8c76; height:25px; width:72px; margin-top: 10px; margin-left: 1px;";
+  }
+  */
+}
+function speed1x()
+{
+  toggle_pause = 0;
+  document.getElementById("1xspeed").style = "background-color: #ac261c; font-size: 15px ;color:  #9f8c76; height:25px; width:72px; margin-top: 10px; margin-left: 1px;";
+  document.getElementById("toggle_p").style="font-size: 15px ;color:  #9f8c76; background-color: #333; height:25px;width:72px;  margin-top: 10px; margin-left: 1px;";
+  document.getElementById("cycle_").style = "background-color: #333; font-size: 15px ;color:  #9f8c76; height:25px; width:72px; margin-top: 10px; margin-left: 1px;";
+  document.getElementById("step_").style = "background-color: #333; font-size: 15px ;color:  #9f8c76; height:25px; width:72px; margin-top: 10px; margin-left: 1px;";
+  cpu.interval = 0xF;
+  cpu.toggle_frequency = 0;
+  cycle1 = 0;
+  clearInterval(cpu.cycle);
+  cpu.cycle=setInterval(emu,cpu.interval);
+}
+let cycle1 = 0;
+function cycle_mode(){
+  cycle1 = 1;
+  cpu.toggle_frequency = 0;
+  clearInterval(cpu.cycle);
+  emu();
+  toggle_pause = 0;
+  document.getElementById("toggle_p").style="font-size: 15px ;color:  #9f8c76; background-color: #333; height:25px;width:72px;  margin-top: 10px; margin-left: 1px;";
+  document.getElementById("cycle_").style = "background-color: #333; font-size: 15px ;color:  #9f8c76; height:25px; width:72px; margin-top: 10px; margin-left: 1px;";
+  document.getElementById("step_").style = "background-color: #ac261c; font-size: 15px ;color:  #9f8c76; height:25px; width:72px; margin-top: 10px; margin-left: 1px;";
+  document.getElementById("1xspeed").style = "background-color: #333; font-size: 15px ;color:  #9f8c76; height:25px; width:72px; margin-top: 10px; margin-left: 1px;";
+}
+function emu()
+{
+runcycle(cpu.memory[cpu.pc]<<8|cpu.memory[cpu.pc+1]);s=s+"  "+cpu.pc+" "+to0xstr(cpu.memory[cpu.pc]<<8|cpu.memory[cpu.pc+1]);
+runcycle(cpu.memory[cpu.pc]<<8|cpu.memory[cpu.pc+1]);s=s+"  "+cpu.pc+" "+to0xstr( cpu.memory[cpu.pc]<<8|cpu.memory[cpu.pc+1] );
+runcycle(cpu.memory[cpu.pc]<<8|cpu.memory[cpu.pc+1]);s=s+"  "+cpu.pc+" "+to0xstr( cpu.memory[cpu.pc]<<8|cpu.memory[cpu.pc+1] );
+runcycle(cpu.memory[cpu.pc]<<8|cpu.memory[cpu.pc+1]);s=`${s}  ${cpu.pc} ${to0xstr(cpu.memory[cpu.pc]<<8|cpu.memory[cpu.pc+1])}`;
+runcycle(cpu.memory[cpu.pc]<<8|cpu.memory[cpu.pc+1]);s=`${s}  ${cpu.pc} ${to0xstr( cpu.memory[cpu.pc]<<8|cpu.memory[cpu.pc+1])}`;
+runcycle(cpu.memory[cpu.pc]<<8|cpu.memory[cpu.pc+1]);s=`${s}  ${cpu.pc} ${to0xstr( cpu.memory[cpu.pc]<<8|cpu.memory[cpu.pc+1] )}`;
+runcycle(cpu.memory[cpu.pc]<<8|cpu.memory[cpu.pc+1]);s=`${s}  ${cpu.pc} ${to0xstr( cpu.memory[cpu.pc]<<8|cpu.memory[cpu.pc+1] )}`;
+runcycle(cpu.memory[cpu.pc]<<8|cpu.memory[cpu.pc+1]);s=`${s}  ${cpu.pc} ${to0xstr(cpu.memory[cpu.pc]<<8|cpu.memory[cpu.pc+1] )}`;
+render();
+tdecr();
+//clearTimeout(cycle);
+//cycle=setTimeout(emu,16);
+
+//document.getElementById("06").innerHTML="memory"+to0xstr(cpu.memory[cpu.pc]);
+//document.getElementById("07").innerHTML="dt"+cpu.delaytimer;
+}
+document.onkeyup =document.onkeydown = keyboard;
+document.getElementById('0').addEventListener("touchstart", key_0);
+document.getElementById('1').addEventListener("touchstart", key_1);
+document.getElementById('2').addEventListener("touchstart", key_2);
+document.getElementById('3').addEventListener("touchstart", key_3);
+document.getElementById('4').addEventListener("touchstart", key_4);
+document.getElementById('5').addEventListener("touchstart", key_5);
+document.getElementById('6').addEventListener("touchstart", key_6);
+document.getElementById('7').addEventListener("touchstart", key_7);
+document.getElementById('8').addEventListener("touchstart", key_8);
+document.getElementById('9').addEventListener("touchstart", key_9);
+document.getElementById('a').addEventListener("touchstart", key_A);
+document.getElementById('b').addEventListener("touchstart", key_B);
+document.getElementById('c').addEventListener("touchstart", key_C);
+document.getElementById('d').addEventListener("touchstart", key_D);
+document.getElementById('e').addEventListener("touchstart", key_E);
+document.getElementById('f').addEventListener("touchstart", key_F);
+
+function keyboard(event)
+{
+  let charcode = string.fromCharCode(event.which);
+  let d = (event.type == 'keydown')? true :false;
+  let key = 
+  {
+  '1':1, '2':2, '3':3, '4':12,
+  'Q':4, 'W':5, 'E':6, '7':13,
+  'A':7, 'S':8, 'D':9, 'F':14,
+  'Z':10, 'X':0, 'C':11, 'V':15,
+  }[charcode]
+  if(key !== undefined)
+  {
+    switch (d)
+    {
+      case true: key_pressed(key); break;
+      case false: key_r(key); break;
+    }
+  }
+//  document.getElementById("-8").innerHTML="keypress "+cpu.keypress;
+}
+function key_0(){key_pressed(0);}
+function key_1(){key_pressed(1);}
+function key_2(){key_pressed(2);}
+function key_3(){key_pressed(3);}
+function key_4(){key_pressed(4);}
+function key_5(){key_pressed(5);}
+function key_6(){key_pressed(6);}
+function key_7(){key_pressed(7);}
+function key_8(){key_pressed(8);}
+function key_9(){key_pressed(9);}
+function key_A(){key_pressed(10);}
+function key_B(){key_pressed(11);}
+function key_C(){key_pressed(12);}
+function key_D(){key_pressed(13);}
+function key_E(){key_pressed(14);}
+function key_F(){key_pressed(15);}
+
+document.getElementById('0').addEventListener("touchend", key0);
+document.getElementById('1').addEventListener("touchend", key1);
+document.getElementById('2').addEventListener("touchend", key2);
+document.getElementById('3').addEventListener("touchend", key3);
+document.getElementById('4').addEventListener("touchend", key4);
+document.getElementById('5').addEventListener("touchend", key5);
+document.getElementById('6').addEventListener("touchend", key6);
+document.getElementById('7').addEventListener("touchend", key7);
+document.getElementById('8').addEventListener("touchend", key8);
+document.getElementById('9').addEventListener("touchend", key9);
+document.getElementById('a').addEventListener("touchend", keyA);
+document.getElementById('b').addEventListener("touchend", keyB);
+document.getElementById('c').addEventListener("touchend", keyC);
+document.getElementById('d').addEventListener("touchend", keyD);
+document.getElementById('e').addEventListener("touchend", keyE);
+document.getElementById('f').addEventListener("touchend", keyF);
+
+function key0(){key_r(0);}
+function key1(){key_r(1);}
+function key2(){key_r(2);}
+function key3(){key_r(3);}
+function key4(){key_r(4);}
+function key5(){key_r(5);}
+function key6(){key_r(6);}
+function key7(){key_r(7);}
+function key8(){key_r(8);}
+function key9(){key_r(9);}
+function keyA(){key_r(10);}
+function keyB(){key_r(11);}
+function keyC(){key_r(12);}
+function keyD(){key_r(13);}
+function keyE(){key_r(14);}
+function keyF(){key_r(15);}
+
+function key_pressed(key)
+{
+  
+  cpu.keypress[key] = 1;
+    if(cpu.opcode_keypress != 100000)
+    {
+      (cpu.register[(cpu.opcode_keypress&0x0F00) >>8]) = key;
+      cpu.pc+=2;
+      cpu.opcode_keypress=100000;
+    }
+}
+function key_r(key)
+{
+  cpu.keypress[key]= 0;
+  
+  //document.getElementById ("07").innerHTML =key+": "+cpu.keypress[key];
+}
+
+function runcycle(opcode)
+{
+ // opcode=cpu.memory[pc];
+  r=(opcode&0xF000)>>12;
+ // document.getElementById ("03").innerHTML ="msb"+r;
+
+  switch (r){
+    case 0:{
+      switch(to0xstr(opcode&0x000F)){
+        case '0x0000': {clearscreen(); break;}
+        case '0x000e': return_(); break;
+      }
+      break;
+    }
+    case 1: {jumptoNNN(opcode); break;}
+    case 2: calladdress(opcode); break;
+    case 3: skipnextinstr_VXeqNN(opcode); break;
+    case 4: skipnextinstr_VXneqNN(opcode); break;
+    case 5: skipnextinstr_VXeqVY(opcode); break;
+    case 7: {addNNtoVX(opcode); break;}// document.getElementById ("03").innerHTML =to0xstr(opcode);
+    case 6: {storeNNinVX(opcode); break;}
+   // case 7: {addNNtoVX(opcode); document.getElementById ("03").innerHTML =to0xstr(opcode);
+
+    case 8: {
+      switch (to0xstr(opcode&0xF00F)){
+        case '0x8000': storeVYinVX(opcode); break;
+        case '0x8001': setVXtoVXorVY(opcode); break;
+        case '0x8002': setVXtoVXandVY(opcode); break;
+        case '0x8003': setVXtoVXxorVY(opcode); break;
+        case '0x8004': setVXtoVXplusVY(opcode); break;
+        case '0x8005': setVXtoVXminusVY(opcode); break;
+        case '0x8006': VXshr1(opcode); break;
+        case '0x8007': setVXtoVYminusVX(opcode); break;
+        case '0x800e': VXshl1(opcode); break;
+      }
+      break;
+    }
+    case 9: skipnextinstr_VXneqVY(opcode); break;
+    case 10: setItoNNN(opcode); break;
+    case 11: setPCtoNNNplusV0(opcode); break;
+    case 12: setVXrandomAndNN(opcode); break;
+    case 13: displayNbytesprite(opcode); break;
+    case 14: {
+      switch (to0xstr(opcode&0x00FF)){
+        case '0x009e': skipnextinstr_keywithvalueVXpressed(opcode); break;
+        case '0x00a1': skipnextinstr_keywithvalueVXnotpressed(opcode); break;
+      }
+      break;
+    }
+    case 15:
+      switch (to0xstr(opcode&0x00FF)){
+        case '0x0007': setVXtovalueofDTimer(opcode); break;
+        case '0x000a': waitkeypress_storeinVX(opcode); break;
+        case '0x0015': setdelaytimertovalueofVX(opcode); break;
+        case '0x0018': setsoundtimertovalueofVX(opcode); break;
+        case '0x001e': setItosumofIandVX(opcode); break;
+        case '0x0029': setItoVX_locationofsprite(opcode); break;
+        case '0x0033': storeBCDofVX(opcode); break;
+        case '0x0055': storeregistervaluesinmemory(opcode); break;
+        case '0x0065': storevaluesfrommemoryinregister(opcode); break;
+      }
+    break;
+  }
+}
+/*
+runcycle(0x0000);
+runcycle(0x610F);
+runcycle(0x620F);
+runcycle(0xD00a);
+//runcycle(0xD565);
+runcycle(0xf715);
+runcycle(0x8323);
+runcycle(0xa10a);
+render(); 
+*/
+//   document.getElementById("05").innerHTML="dtimer"+cpu.delaytimer ;
+
+function clearscreen()
+{
+//        s=s+"s";
+cpu.vram=cpu.vram.map(()=>0);
+//document.getElementById("08").innerHTML=(cpu.vram);
+cpu.ctx.clearRect(0,0,cpu.canvas0.width,cpu.canvas0.height);
+cpu.drawflag=true;
+cpu.pc=cpu.pc+2;
+}
+function return_()
+{
+//    s=s+"r";
+
+cpu.pc=cpu.stack[cpu.sp];
+cpu.sp-=1;
+cpu.pc+=2;
+}
+function jumptoNNN(opcode)
+{
+//        s=s+"j";
+cpu.pc=(opcode&0x0FFF);
+}
+function calladdress(opcode)
+{
+//        s=s+"c";
+        cpu.sp++;
+cpu.stack[cpu.sp]=cpu.pc;
+
+cpu.pc=(opcode&0x0FFF);
+//document.getElementById("02").innerHTML=to0xstr(cpu.stack[cpu.sp]);
+}
+function skipnextinstr_VXeqNN(opcode)
+{
+if(cpu.register[(opcode&0x0F00)>>8] == (opcode&0x00FF))
+   cpu.pc+=4;
+else
+{  cpu.pc+=2;
+//   document.getElementById("02").innerHTML=(cpu.register);
+}
+}
+function displayNbytesprite(opcode)
+{
+  let x0=cpu.register[(opcode&0x0F00)>>8];
+  let y0=cpu.register[(opcode&0x00F0)>>4];
+  cpu.register[0xF]=0;
+  for(let y=0; y<(opcode&0x000F); y++)
+  {
+    for(let x=0; x<8; x++)
+    {
+      if(((cpu.memory[cpu.I+y])&(0x80>>x)) != 0)
+      {
+        if((cpu.vram[x0+x+(y0+y)*64])==1)
+        {
+          (cpu.register[0xF])=1;
+        }
+        (cpu.vram[x0+x+(y0+y)*64]) ^=1;
+      }
+    }
+  }
+  cpu.drawflag=1;
+  cpu.pc+=2;
+}
+
+function setItoVX_locationofsprite(opcode)
+{
+  cpu.I=(cpu.register[(opcode&0x0F00)>>8])*5;
+  cpu.pc+=2;
+}
+function skipnextinstr_VXneqNN(opcode)
+{
+  if(cpu.register[(opcode&0x0F00)>>8] != (opcode&0x00FF))
+  { 
+    cpu.pc+=4;
+ //   document.getElementById("-5").innerHTML='VXneqNN '+(cpu.register)+' '+ (opcode&0x00FF);
+  }
+  else
+  {
+     cpu.pc+=2;
+  }
+}
+function skipnextinstr_VXeqVY(opcode)
+{
+  if(cpu.register[(opcode&0x0F00)>>8] == cpu.register[(opcode&0x00F0)>>4])
+    cpu.pc+=4;
+  else
+    cpu.pc+=2;
+}
+function storeNNinVX(opcode)
+{
+  cpu.register[(opcode&0x0F00)>>8] = (opcode&0x00FF);
+  cpu.pc+=2;
+}
+function addNNtoVX(opcode)
+{
+  /*
+  if(cpu.register[(opcode&0x0F00)>>8] + (opcode&0x00FF) > 0xFF)
+    cpu.register[0xF] = 1;
+  else
+    cpu.register[0xF] = 0;
+    */
+  cpu.register[(opcode&0x0F00)>>8] += (opcode&0x00FF);
+  cpu.pc+=2;
+}
+function storeVYinVX(opcode)
+{
+  cpu.register[(opcode&0x0F00)>>8] = cpu.register[(opcode&0x00F0)>>4] 
+  cpu.pc+=2;
+}
+function setVXtoVXorVY(opcode)
+{
+  cpu.register[(opcode&0x0F00)>>8] = cpu.register[(opcode&0x0F00)>>8] | cpu.register[(opcode&0x00F0)>>4];
+  cpu.pc+=2;
+}
+function setVXtoVXandVY(opcode)
+{
+  cpu.register[(opcode&0x0F00)>>8] = cpu.register[(opcode&0x0F00)>>8] & cpu.register[(opcode&0x00F0)>>4];
+  cpu.pc+=2;
+}
+function setVXtoVXxorVY(opcode)
+{
+  cpu.register[(opcode&0x0F00)>>8] = cpu.register[(opcode&0x0F00)>>8] ^ cpu.register[(opcode&0x00F0)>>4];
+  cpu.pc+=2;
+}
+function setVXtoVXplusVY(opcode)
+{
+  
+  if((cpu.register[(opcode&0x00F0)>>4] + cpu.register[(opcode&0x0F00)>>8]) > 0xFF)
+    cpu.register[0xF] = 1;
+  else
+    cpu.register[0xF] = 0;
+  cpu.register[(opcode&0x0F00)>>8] = (cpu.register[(opcode&0x0F00)>>8] + cpu.register[(opcode&0x00F0)>>4]);
+  cpu.pc+=2;
+}
+function setVXtoVXminusVY(opcode)
+{
+  if(cpu.register[(opcode&0x00F0)>>4] > cpu.register[(opcode&0x0F00)>>8])
+    cpu.register[0xF] = 0;
+  else
+    cpu.register[0xF] = 1;
+  cpu.register[(opcode&0x0F00)>>8] = cpu.register[(opcode&0x0F00)>>8] - cpu.register[(opcode&0x00F0)>>4];
+  cpu.pc+=2;
+}
+function VXshr1(opcode)
+{
+  cpu.register[0xF] = ((cpu.register[opcode&0x0F00>>8]) & 0x1);
+  cpu.register[opcode&0x0F00>>8] >>= 1;
+  cpu.pc+=2;
+}
+function setVXtoVYminusVX(opcode)
+{
+  if(cpu.register[(opcode&0x00F0)>>4] > cpu.register[(opcode&0x0F00)>>8])
+    cpu.register[0xF] = 1;
+  else
+    cpu.register[0xF] = 0;
+  cpu.register[(opcode&0x0F00)>>8] = cpu.register[(opcode&0x00F0)>>4] - cpu.register[(opcode&0x0F00)>>8];
+  cpu.pc+=2;
+}
+function VXshl1(opcode)
+{
+  cpu.register[0xF] = ((cpu.register[(opcode&0x0F00) >>8])>>7);
+  cpu.register[(opcode&0x0F00) >>8] <<= 1;
+  cpu.pc+=2;
+}
+function skipnextinstr_VXneqVY(opcode)
+{
+   if(cpu.register[(opcode&0x0F00) >>8] == cpu.register[(opcode&0x00F0) >>4])
+     cpu.pc+=2;
+   else
+     cpu.pc+=4;
+}
+function setItoNNN(opcode)
+{
+  cpu.I = (opcode&0x0FFF);
+//  document.getElementById("-5").innerHTML='cpu.I '+ cpu.I; 
+  cpu.pc+=2;
+}
+function setPCtoNNNplusV0(opcode)
+{
+  cpu.pc = (opcode&0x0FFF) + cpu.register[0x0];
+}
+function setVXrandomAndNN(opcode)
+{
+  cpu.register[(opcode&0x0F00) >>8] = (Math.floor(Math.random()*256-0.0000000001))&(opcode&0x00FF);
+  cpu.pc+=2;
+}
+function skipnextinstr_keywithvalueVXpressed(opcode)
+{
+  if(cpu.keypress[cpu.register[(opcode&0x0F00)>>8]] ==1)
+    cpu.pc+=4;
+  else
+    cpu.pc+=2;
+}
+function skipnextinstr_keywithvalueVXnotpressed(opcode)
+{
+  if(cpu.keypress[cpu.register[(opcode&0x0F00)>>8]] ==1)
+    cpu.pc+=2;
+  else
+    cpu.pc+=4;
+}
+function setVXtovalueofDTimer(opcode)
+{
+  cpu.register[(opcode&0x0F00) >>8] = cpu.delaytimer;
+  cpu.pc+=2;
+}
+function waitkeypress_storeinVX(opcode){
+  cpu.opcode_keypress=opcode;
+//  document.getElementById("05").innerHTML="register"+to0xstr(cpu.opcode_keypress&0x0f00) ;
+
+}
+function setdelaytimertovalueofVX(opcode)
+{
+  cpu.delaytimer = cpu.register[(opcode&0x0F00) >>8];
+  cpu.pc+=2;
+//  document.getElementById("05").innerHTML="dtimer"+cpu.delaytimer+"   "+ ((opcode&0x0F00) >>8);
+
+}
+function setsoundtimertovalueofVX(opcode)
+{
+  cpu.soundtimer = cpu.register[(opcode&0x0F00) >>8];
+  cpu.pc+=2;
+}
+function setItosumofIandVX(opcode)
+{
+  if(cpu.register[(opcode&0x0F00)>>8] + cpu.I > 0xFFF)
+    cpu.register[0xF] = 1;
+  else
+    cpu.register[0xF] = 0;
+  cpu.I = cpu.I +cpu.register[(opcode&0x0F00) >>8];
+  cpu.pc+=2;
+}
+function storeBCDofVX(opcode)
+{
+    /*
+  cpu.memory[cpu.I+2] = cpu.register[(opcode&0x0F00) >>8]%10;
+  cpu.memory[cpu.I+1] = (cpu.register[(opcode&0x0F00) >>8]%100 - cpu.memory[cpu.I+2])/10;
+  cpu.memory[cpu.I] = (cpu.register[(opcode&0x0F00) >>8]%1000 - cpu.memory[cpu.I+2]/10 - cpu.memory[cpu.I+1])/100;
+  */
+  cpu.memory[cpu.I+2] = (cpu.register[(opcode&0x0F00) >>8]%100)%10;
+  cpu.memory[cpu.I+1] = (cpu.register[(opcode&0x0F00) >>8]/10)%10;
+  cpu.memory[cpu.I] = (cpu.register[(opcode&0x0F00) >>8])/100;
+  
+  cpu.pc+=2;
+}
+function storeregistervaluesinmemory(opcode)
+{
+  for(let i=0; i<=((opcode&0x0F00) >>8); ++i)
+  {
+    cpu.memory[cpu.I+i] = cpu.register[i];
+  }
+  cpu.I += ((opcode&0x0F00) >>8) +1;
+  cpu.pc+=2;
+}
+function storevaluesfrommemoryinregister(opcode)
+{
+  for(let i=0; i<=((opcode&0x0F00) >>8); ++i)
+  {
+    cpu.register[i] = cpu.memory[cpu.I+i];
+  }
+  cpu.I += ((opcode&0x0F00) >>8) +1;
+  cpu.pc+=2;
+}
+</script>
+</html>
